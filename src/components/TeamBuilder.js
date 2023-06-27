@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import PokemonForm from './PokemonForm';
 import SelectedPokemonCard from './SelectedPokemonCard';
@@ -12,9 +11,15 @@ const TeamBuilder = () => {
         setSelectedPokemon(response.data);
     };
 
+    const handleFormSubmit = async (formData) => {
+        const response = await axios.post('http://localhost:4000/teams', formData);
+
+        console.log(response.data); // log the response for debugging
+    };
+
     return (
         <div>
-            <PokemonForm onPokemonChange={handlePokemonChange} />
+            <PokemonForm onPokemonChange={handlePokemonChange} onSubmit={handleFormSubmit} />
             {selectedPokemon && <SelectedPokemonCard pokemon={selectedPokemon} />}
         </div>
     );
