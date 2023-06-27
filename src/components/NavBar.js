@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
     return (
         <nav>
-            <ul>
-                <li><Link to="/">Pokedex</Link></li>
-                <li><Link to="/team-builder">Team Builder</Link></li>
-            </ul>
+            <NavLink to="/">Pokedex</NavLink>
+            <NavLink to="/team-builder">Team Builder</NavLink>
         </nav>
     )
 }
