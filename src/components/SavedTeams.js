@@ -5,6 +5,14 @@ import SelectedPokemonCard from './SelectedPokemonCard';
 const SavedTeams = () => {
   const [teams, setTeams] = useState([]);
 
+  const handleDelete = async (id) => {
+    await fetch(`http://localhost:4000/teams/${id}`, {
+      method: 'DELETE'
+    })
+    // Update the local state to reflect the delete
+    setTeams(teams.filter((team) => team.id !== id));
+  };
+
   useEffect(() => {
     const fetchTeams = async () => {
       const response = await axios.get('http://localhost:4000/teams');
@@ -32,6 +40,7 @@ const SavedTeams = () => {
             {team.team.map((pokemon, index) => (
               <SelectedPokemonCard key={index} pokemon={pokemon} />
             ))}
+            <button onClick={() => handleDelete(team.id)}>Delete</button>
           </div>
         </div>
       ))}
