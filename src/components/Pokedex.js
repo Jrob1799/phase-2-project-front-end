@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import PokemonCard from './PokemonCard';
 
 const Pokedex = () => {
-  const [pokemon, setPokemon] = useState([]);
+    const [pokemonList, setPokemonList] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        'https://pokeapi.co/api/v2/pokemon?limit=100'
-      );
-      setPokemon(result.data.results);
-    };
-    fetchData();
-  }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+            const promises = response.data.results.map(result => axios.get(result.url));
+            const pokemonResponses = await Promise.all(promises);
+            setPokemonList(pokemonResponses.map(response => response.data));
+        };
 
-  return (
-    <div>
-      {pokemon.map((poke) => (
-        <div key={poke.name}>{poke.name}</div>
-      ))}
-    </div>
-  );
+        fetchData();
+    }, []);
+
+    return (
+        <div>
+            {pokemonList.map((pokemon, index) => (
+                <PokemonCard key={index} pokemon={pokemon} />
+            ))}
+        </div>
+    );
 };
 
 export default Pokedex;
