@@ -13,7 +13,7 @@ function App() {
         <Route path="/team-builder">
           <TeamBuilder />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Pokedex />
         </Route>
       </Switch>
