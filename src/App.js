@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Pokedex from './components/Pokedex';
 import TeamBuilder from './components/TeamBuilder';
@@ -7,7 +6,6 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  const [teams, setTeams] = useState([]);
 
   const addTeam = async (username, team) => {
     try {
@@ -16,7 +14,7 @@ function App() {
 
       const response = await axios.post(url, { username, team });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.log('Team successfully added');
       } else {
         console.error('Error adding team:', response);
