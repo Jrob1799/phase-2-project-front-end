@@ -227,3 +227,14 @@ form button:hover {
   gap: 10px;
   justify-items: center; /* centers the grid items along the row */
 }
+
+.delete-button {
+  display: block;
+  margin: auto; 
+  padding: 10px;
+  background-color: red; 
+  color: white; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
