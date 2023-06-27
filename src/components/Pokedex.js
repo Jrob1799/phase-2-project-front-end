@@ -17,11 +17,11 @@ const Pokedex = () => {
     }, []);
 
     return (
-        <div>
-            {pokemonList.map((pokemon, index) => (
-                <PokemonCard key={index} pokemon={pokemon} />
-            ))}
-        </div>
+      <div className="pokedex">
+        {pokemonList.map((pokemon, index) => (
+          <PokemonCard key={index} pokemon={pokemon} />
+        ))}
+      </div>
     );
 };
 
