@@ -225,7 +225,8 @@ form button:hover {
 }
 
 .teams-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* aligns items on the line in the center */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center; /* centers the grid items along the row */
 }
