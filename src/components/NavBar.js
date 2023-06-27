@@ -6,6 +6,7 @@ const NavBar = () => {
         <nav>
             <NavLink to="/">Pokedex</NavLink>
             <NavLink to="/team-builder">Team Builder</NavLink>
+            <NavLink to="/saved-teams">Saved Teams</NavLink>
         </nav>
     )
 }
