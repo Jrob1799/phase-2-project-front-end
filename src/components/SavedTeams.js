@@ -1,5 +1,7 @@
+// SavedTeams.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import SelectedPokemonCard from './SelectedPokemonCard';
 
 const SavedTeams = () => {
   const [teams, setTeams] = useState([]);
@@ -7,7 +9,17 @@ const SavedTeams = () => {
   useEffect(() => {
     const fetchTeams = async () => {
       const response = await axios.get('http://localhost:4000/teams');
-      setTeams(response.data);
+      const teamsData = response.data;
+      
+      for (let team of teamsData) {
+        const pokemonData = await Promise.all(team.team.map(async (pokemonName) => {
+          const pokemonResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+          return pokemonResponse.data;
+        }));
+        team.team = pokemonData;
+      }
+
+      setTeams(teamsData);
     };
     fetchTeams();
   }, []);
@@ -17,11 +29,11 @@ const SavedTeams = () => {
       {teams.map(team => (
         <div key={team.id}>
           <h2>{team.username}</h2>
-          <ul>
+          <div className="cards-container">
             {team.team.map((pokemon, index) => (
-              <li key={index}>{pokemon}</li>
+              <SelectedPokemonCard key={index} pokemon={pokemon} />
             ))}
-          </ul>
+          </div>
         </div>
       ))}
     </div>
