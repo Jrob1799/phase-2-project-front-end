@@ -24,7 +24,7 @@ const SavedTeams = () => {
   }, []);
 
   return (
-    <div>
+    <div className="teams-container">
       {teams.map(team => (
         <div key={team.id} className="team-card">
           <h2>{team.username}</h2>
