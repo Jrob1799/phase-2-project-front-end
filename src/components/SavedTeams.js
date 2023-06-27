@@ -40,7 +40,7 @@ const SavedTeams = () => {
             {team.team.map((pokemon, index) => (
               <SelectedPokemonCard key={index} pokemon={pokemon} />
             ))}
-            <button onClick={() => handleDelete(team.id)}>Delete</button>
+            <button className='delete-button' onClick={() => handleDelete(team.id)}>Delete</button>
           </div>
         </div>
       ))}
