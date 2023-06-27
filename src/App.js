@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Pokedex from './components/Pokedex';
 import TeamBuilder from './components/TeamBuilder';
 import NavBar from './components/NavBar';
+import SavedTeams from './components/SavedTeams';
 import './App.css';
 import axios from 'axios';
 
@@ -30,6 +31,9 @@ function App() {
       <Switch>
         <Route path="/team-builder">
           <TeamBuilder addTeam={addTeam} />
+        </Route>
+        <Route path="/saved-teams">
+          <SavedTeams />
         </Route>
         <Route exact path="/">
           <Pokedex />
