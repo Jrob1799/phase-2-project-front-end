@@ -25,6 +25,7 @@ const TeamBuilder = () => {
 
   return (
     // your form UI here
+    console.log("this will be a form soon")
   );
 };
 
