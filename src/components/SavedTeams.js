@@ -27,7 +27,7 @@ const SavedTeams = () => {
   return (
     <div>
       {teams.map(team => (
-        <div key={team.id}>
+        <div key={team.id} className="team-card">
           <h2>{team.username}</h2>
           <div className="cards-container">
             {team.team.map((pokemon, index) => (
