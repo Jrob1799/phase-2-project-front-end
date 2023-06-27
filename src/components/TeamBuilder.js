@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PokemonForm from './PokemonForm';
 
 const TeamBuilder = () => {
   const [team, setTeam] = useState([]);
@@ -24,8 +25,10 @@ const TeamBuilder = () => {
   };
 
   return (
-    // your form UI here
-    console.log("this will be a form soon")
+    <div>
+      <PokemonForm addPokemon={addPokemon} />
+      {/* Rest of your UI here */}
+    </div>
   );
 };
 
