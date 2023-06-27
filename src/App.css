@@ -199,9 +199,9 @@ form button:hover {
 .team-card .selected-pokemon-card {
   width: 100%;
   display: flex;
-  flex-direction: row;  /* Change this from column to row */
+  flex-direction: row;  
   justify-content: center;
-  flex-wrap: wrap;  /* Add this line to allow items to wrap onto multiple lines */
+  flex-wrap: wrap;  
 }
 
 .team-card .selected-pokemon-card h3, 
@@ -214,12 +214,9 @@ form button:hover {
   height: auto; 
 }
 
-
-/* ...existing styles... */
-
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* adjusted */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 10px;
   width: 55%;
 }
