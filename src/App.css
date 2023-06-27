@@ -57,3 +57,20 @@
   width: 100%;
   height: auto;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  background-color: #f8f9fa;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 0 15px;
+}
+
+nav a.active {
+  color: #007bff;
+}
