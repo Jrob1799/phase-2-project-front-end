@@ -4,23 +4,24 @@ import SelectedPokemonCard from './SelectedPokemonCard';
 import axios from 'axios';
 
 const TeamBuilder = () => {
-    const [selectedPokemon, setSelectedPokemon] = useState(null);
-
-    const handlePokemonChange = async (pokemonName) => {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-        setSelectedPokemon(response.data);
-    };
+    const [team, setTeam] = useState([]);
 
     const handleFormSubmit = async (formData) => {
-        const response = await axios.post('http://localhost:4000/teams', formData);
+        await axios.post('http://localhost:4000/teams', formData);
 
-        console.log(response.data); // log the response for debugging
+        // Fetch data for each Pokemon in the team and set in state
+        const teamData = await Promise.all(formData.team.map(pokemonName => 
+            axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        ));
+        setTeam(teamData.map(response => response.data));
     };
 
     return (
-        <div>
-            <PokemonForm onPokemonChange={handlePokemonChange} onSubmit={handleFormSubmit} />
-            {selectedPokemon && <SelectedPokemonCard pokemon={selectedPokemon} />}
+        <div className="team-builder">
+            <PokemonForm onSubmit={handleFormSubmit} />
+            {team.map(pokemon => (
+                <SelectedPokemonCard key={pokemon.name} pokemon={pokemon} />
+            ))}
         </div>
     );
 };
