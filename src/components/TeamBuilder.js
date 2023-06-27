@@ -6,7 +6,7 @@ const TeamBuilder = () => {
   const [teams, setTeams] = useState([]);
 
   const addTeam = async (username, team) => {
-    const response = await axios.post('http://localhost:3000/teams', {
+    const response = await axios.post('http://localhost:4000/teams', {
       username,
       team,
     });
