@@ -1,58 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PokemonCard from './PokemonCard';
 
-const PokemonForm = ({ onPokemonChange, onSubmit }) => {
-    const [pokemonList, setPokemonList] = useState([]);
-    const [team, setTeam] = useState(Array(6).fill(''));
-    const [username, setUsername] = useState('');
+const PokemonForm = ({ addTeam }) => {
+  const [pokemonList, setPokemonList] = useState([]);
+  const [team, setTeam] = useState(Array(6).fill(''));
+  const [username, setUsername] = useState('');
+  const [selectedPokemons, setSelectedPokemons] = useState(Array(6).fill(null));
 
-    useEffect(() => {
-        const fetchPokemon = async () => {
-            const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
-            setPokemonList(response.data.results);
-        };
-
-        fetchPokemon();
-    }, []);
-
-    const handleSelectChange = (index, event) => {
-        const newTeam = [...team];
-        newTeam[index] = event.target.value;
-        setTeam(newTeam);
-
-        if (onPokemonChange) {
-            onPokemonChange(event.target.value);
-        }
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://pokeapi.co/api/v2/pokemon?limit=151' // First 151 Pokemon
+      );
+      setPokemonList(result.data.results);
     };
+    fetchData();
+  }, []);
 
-    const handleInputChange = (event) => {
-        setUsername(event.target.value);
-    };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addTeam(username, team);
+    setTeam(Array(6).fill(''));
+    setUsername('');
+    setSelectedPokemons(Array(6).fill(null));
+  };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
-        if (onSubmit) {
-            onSubmit({ username, team });
-        }
-    };
+  const handlePokemonChange = (index) => async (event) => {
+    const selectedPokemon = event.target.value;
+    const newTeam = [...team];
+    newTeam[index] = selectedPokemon;
+    setTeam(newTeam);
 
-    return (
-        <form onSubmit={handleSubmit}>
-            {team.map((pokemon, index) => (
-                <select key={index} value={pokemon} onChange={event => handleSelectChange(index, event)}>
-                    <option value="">--Please choose a Pokemon--</option>
-                    {pokemonList.map(pokemon => (
-                        <option key={pokemon.name} value={pokemon.name}>
-                            {pokemon.name}
-                        </option>
-                    ))}
-                </select>
-            ))}
-            <input type="text" placeholder="Username" value={username} onChange={handleInputChange} />
-            <button type="submit">Submit Team</button>
-        </form>
+    const pokemonData = await axios(
+      `https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`
     );
+    setSelectedPokemons(prevSelectedPokemons => {
+      const newSelectedPokemons = [...prevSelectedPokemons];
+      newSelectedPokemons[index] = <PokemonCard key={index} pokemon={pokemonData.data} />;
+      return newSelectedPokemons;
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={username} onChange={handleUsernameChange} placeholder="Enter username" required />
+      {[...Array(6)].map((_, index) => (
+        <div key={index}>
+          <select value={team[index]} onChange={handlePokemonChange(index)} required>
+            <option value="">--Choose a Pokemon--</option>
+            {pokemonList.map(pokemon => (
+              <option key={pokemon.name} value={pokemon.name}>
+                {pokemon.name}
+              </option>
+            ))}
+          </select>
+          {selectedPokemons[index]}
+        </div>
+      ))}
+      <button type="submit">Add Team</button>
+    </form>
+  );
 };
 
 export default PokemonForm;
