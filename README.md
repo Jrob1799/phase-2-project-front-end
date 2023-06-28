@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Pokemon Team Builder (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![App Gif](/src/Phase-2-gif.gif)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This is the frontend of the 'Pokemon Team Builder', an interactive Pokédex and team builder application. Built with React.js and Axios for data fetching, this application retrieves Pokemon data from a backend JSON server and allows users to browse, select, and save their Pokemon teams.
 
-### `npm start`
+Check out the live application [here](https://main--phase-2-react-frontend.netlify.app/saved-teams).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For information about the backend of this application, visit the [backend repository](https://github.com/Jrob1799/phase-2-project-backend).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to Run Locally
 
-### `npm test`
+1. Clone the repository.
+2. Install the dependencies with `npm install`.
+3. Start the server with `npm start`.
+4. Visit `http://localhost:3000` in your web browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- Browse and display a comprehensive Pokédex.
+- Create and customize your own Pokemon team.
+- Save your favorite teams for future reference.
+- Delete previously saved teams.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future Improvements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Implement user authentication for personal team saves.
+- Enhance the user interface and user experience.
+- Add a search functionality to locate specific Pokemon.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `npm run eject`
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the terms of the MIT License. See the [LICENSE](LICENSE) file for details.
