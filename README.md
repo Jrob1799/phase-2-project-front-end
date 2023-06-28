@@ -6,7 +6,7 @@
 
 This is the frontend of the 'Pokemon Team Builder', an interactive Pokédex and team builder application. Built with React.js and Axios for data fetching, this application retrieves Pokemon data from a backend JSON server and allows users to browse, select, and save their Pokemon teams.
 
-Check out the live application [here](https://main--phase-2-react-frontend.netlify.app/saved-teams).
+Check out the live application [here](https://main--phase-2-react-frontend.netlify.app).
 
 For information about the backend of this application, visit the [backend repository](https://github.com/Jrob1799/phase-2-project-backend).
 
