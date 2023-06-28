@@ -11,7 +11,7 @@ function App() {
   const addTeam = async (username, team) => {
     try {
       // Replace this URL with your server's endpoint for adding a team
-      const url = 'http://localhost:4000/teams';
+      const url = 'https://phase-2-react-app-backend.onrender.com/teams';
 
       const response = await axios.post(url, { username, team });
 

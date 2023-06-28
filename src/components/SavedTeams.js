@@ -15,7 +15,7 @@ const SavedTeams = () => {
 
   useEffect(() => {
     const fetchTeams = async () => {
-      const response = await axios.get('http://localhost:4000/teams');
+      const response = await axios.get('https://phase-2-react-app-backend.onrender.com/teams');
       const teamsData = response.data;
       
       for (let team of teamsData) {
