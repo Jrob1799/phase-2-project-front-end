@@ -6,7 +6,7 @@ const SavedTeams = () => {
   const [teams, setTeams] = useState([]);
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:4000/teams/${id}`, {
+    await fetch(`https://phase-2-project-backend-hfad.onrender.com/teams/${id}`, {
       method: 'DELETE'
     })
     // Update the local state to reflect the delete
@@ -15,7 +15,7 @@ const SavedTeams = () => {
 
   useEffect(() => {
     const fetchTeams = async () => {
-      const response = await axios.get('https://phase-2-react-app-backend.onrender.com/teams');
+      const response = await axios.get('https://phase-2-project-backend-hfad.onrender.com/teams');
       const teamsData = response.data;
       
       for (let team of teamsData) {
